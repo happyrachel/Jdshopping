@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>结算页面</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/jiesuan.css">
+</head>
+<body>
+	<div id="container">
+		<header>
+			<ul>
+				<li>全部商品</li>
+				<li>京东大药房</li>
+			</ul>
+		</header>
+		<div class="main">
+			<div class="main-top">
+				<input type="checkbox" class="all">
+				<p>全选</p>
+				<p>商品</p>
+				<ul>
+					<li>单价</li>
+					<li>数量</li>
+					<li>小计</li>
+					<li>操作</li>
+				</ul>
+			</div>
+			<div id="store">
+				<div class="store-top">
+					<input type="checkbox" class="one">
+					<p>欧塞洛斯照明旗舰店</p>
+					<img src="images/jingdomg_38.png" alt="">
+					<p>已免运费</p>
+				</div>
+				<div class="store-middle">
+					<img src="images/jingdomg_48.png" alt="">
+					<p>活动商品购满3件，即可享受满减</p>
+					<a href="#">去凑单＞</a>
+				</div>
+				<div class="store-bottom">
+					<div class="s-b-left">
+						<input type="checkbox" class="two">
+						<img src="images/1.jpg" alt="">
+						<p>欧塞洛斯 欧式全铜吊灯客厅卧室<br>餐厅灯具灯饰 H13 J 6头</p>
+						<p>颜色：6头</p>
+					</div>
+					<div class="s-b-right">
+						<span>￥</span>
+						<span class="yuanjia">459.00</span>
+						<ul class="list">
+							<li class="jian">-</li>
+							<li class="num">1</li>
+							<li class="jia">+</li>
+						</ul>
+						<span>￥</span>
+						<span class="money">459.00</span>
+						<ul>
+							<li>删除</li>
+							<li>到货通知</li>
+							<li>移到我的关注</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="store">
+				<div class="store-top">
+					<input type="checkbox" class="one">
+					<p>欧塞洛斯照明旗舰店</p>
+					<img src="images/jingdomg_38.png" alt="">
+					<p>已免运费</p>
+				</div>
+				<div class="store-middle">
+					<img src="images/jingdomg_48.png" alt="">
+					<p>活动商品购满3件，即可享受满减</p>
+					<a href="#">去凑单＞</a>
+				</div>
+				<div class="store-bottom">
+					<div class="s-b-left">
+						<input type="checkbox" class="two">
+						<img src="images/2.jpg" alt="">
+						<p>贝酷(Beiku) 阿狸公仔毛绒玩具布娃娃<br>情侣抱枕玩偶生日情人节圣诞节礼物 圆</p>
+						<p>颜色：大号阿狸45cm</p>
+					</div>
+					<div class="s-b-right">
+						<span>￥</span>
+						<span class="yuanjia">59.00</span>
+						<ul class="list">
+							<li class="jian">-</li>
+							<li class="num">1</li>
+							<li class="jia">+</li>
+						</ul>
+						<span>￥</span>
+						<span class="money">59.00</span>
+						<ul>
+							<li>删除</li>
+							<li>到货通知</li>
+							<li>移到我的关注</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="footer-left">
+				<input type="checkbox" class="all">
+				<ul>
+					<li>全选</li>
+					<li>删除选中的商品</li>
+					<li>移到我的关注</li>
+					<li>清除下柜商品</li>
+				</ul>
+			</div>
+			<div class="footer-right">
+				<p>已选择<span>2</span>件商品<span>∧</span>
+				</p>
+				<div>
+					<p>总价:
+						<span>￥</span>
+						<span id="total">0.00</span>
+					</p>
+					<img src="images/jingdomg_06.png" alt="">
+					<br>
+					<p>已节省：<span>￥</span>0.00</p>
+				</div>
+			</div>
+			<a href="#">去结算</a>
+		</footer>
+		<script>
+			function G(name){
+				return document.getElementsByClassName(name)
+			}
+			function J(tagName){
+				return document.getElementsByTagName(tagName)
+			}
+			function N(id){
+				return document.getElementById(id)
+			}
+			function K(){
+				for(var n=0;n<G("store-bottom").length;n++){
+					G("store-bottom")[n].style.backgroundColor="#fff4e8";
+				}
+			}
+			function H(){
+				for(var n=0;n<G("store-bottom").length;n++){
+					G("store-bottom")[n].style.backgroundColor="white";
+				}
+			}
+			//求和
+			function M(){
+				var total=0;
+				for(var j=0;j<G("money").length;j++){
+					total+=parseFloat(G("money")[j].innerHTML);
+				}
+				N('total').innerHTML=toDecimal2(total);
+			}
+			//强制保留两位小数
+			function toDecimal2(x) {    
+		        var f = parseFloat(x);    
+		        if (isNaN(f)) {    
+		            return false;    
+		        }    
+		        var f = Math.round(x*100)/100;    
+		        var s = f.toString();    
+		        var rs = s.indexOf('.');    
+		        if (rs < 0) {    
+		            rs = s.length;    
+		            s += '.';    
+		        }    
+		        while (s.length <= rs + 2) {    
+		            s += '0';    
+		        }    
+		        return s;    
+		    }   
+		    for(var i=0;i<J("input").length;i++){
+		    	J("input")[i].checked=true;
+		    } 
+			for(var i=0;i<G("list").length;i++){
+				G("jia")[i].index=i;
+				G("jian")[i].index=i;
+				G("list")[i].onclick=function(){
+					var tar = event.target;	
+					var ind=tar.index;
+					var num=G("num")[ind].innerHTML;
+					var yuanjia=G("yuanjia")[ind].innerHTML;			
+					if(tar.getAttribute("class")=="jia"){						
+						num++;		
+					}else if(tar.getAttribute("class")=="jian"){
+						if(num>1){
+							num--;
+						}else{
+							num=1;
+						}
+					}
+					G("num")[ind].innerHTML=num;
+					var money=parseFloat(yuanjia)*num;
+					G("money")[ind].innerHTML=toDecimal2(parseFloat(money));
+					G("one")[ind].checked=true;
+					G("two")[ind].checked=true;
+					M();
+				}
+			}			
+			for(var i=0;i<G("all").length;i++){
+				G("all")[i].onclick=function(){
+					var input=J("input");
+					if(this.checked){
+						for(var j=0;j<input.length;j++){
+							input[j].checked=true;
+						}
+						K();
+						M();
+					}else{
+						for(var m=0;m<input.length;m++){
+							input[m].checked=false;
+						}
+						H();
+						N('total').innerHTML=toDecimal2(0);
+					}
+				}
+			}
+			for(var i=0;i<G("two").length;i++){
+				G("two")[i].index=i;
+				G("one")[i].index=i;
+				var arr=[];
+				G("two")[i].onclick=function(){
+					var ind=this.index;
+					var xiaoji=parseFloat(G("money")[ind].innerHTML);
+					if(this.checked==false){
+						for(var j=0;j<G("all").length;j++){
+							G("all")[j].checked=false;
+						}
+						G("one")[ind].checked=false;
+						G("store-bottom")[ind].style.backgroundColor="white";
+						arr.pop(xiaoji)
+						var n=0;
+						for(var m in arr){
+							n+=arr[m];
+						}
+						N('total').innerHTML=toDecimal2(n)
+					}else{
+						arr.push(xiaoji)
+						G("one")[ind].checked=true;
+						G("store-bottom")[ind].style.backgroundColor="#fff4e8";
+						var n=0;
+						for(var m in arr){
+							n+=arr[m];
+						}
+						N('total').innerHTML=toDecimal2(n)
+					}
+					
+				}
+				G("one")[i].onclick=function(){
+					var ind=this.index;
+					var xiaoji=parseFloat(G("money")[ind].innerHTML);
+					if(this.checked==false){
+						for(var j=0;j<G("all").length;j++){
+							G("all")[j].checked=false;
+						}
+						G("two")[ind].checked=false;
+						G("store-bottom")[ind].style.backgroundColor="white";
+						arr.pop(xiaoji)
+						var n=0;
+						for(var m in arr){
+							n+=arr[m];
+						}
+						N('total').innerHTML=toDecimal2(n)
+					}else{
+						arr.push(xiaoji)
+						G("two")[ind].checked=true;
+						G("store-bottom")[ind].style.backgroundColor="#fff4e8";
+						var n=0;
+						for(var m in arr){
+							n+=arr[m];
+						}
+						N('total').innerHTML=toDecimal2(n)
+					}
+					
+				}
+			}
+		</script>
+	</div>
+</body>
+</html>
